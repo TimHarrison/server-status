@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="google-site-verification"
+	content="vnvdDxT6Npi5uIq6NdnRXq4MZ3IeDSIMC5H6dQ7kbkU" />
+
+<title>Pokemon GO Game Status</title>
+<sec:csrfMetaTags />
+
+<meta name="description"
+	content="Pokemon Go! Game status viewer and report tool." />
+
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"
+	th:href="@{css/bootstrap.min.css}" />
+<link href="css/style.css" rel="stylesheet" type="text/css"
+	th:href="@{css/style.css}" />
+
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-2 col-md-3 col-sm-3"></div>
+			<div class="col-lg-8 col-md-6 col-sm-6">
+				<h2>Pokemon GO Game Status</h2>
+				<p>View the current status of Pokemon GO below. Click Up or Down
+					based on the experience you are getting with Pokemon GO.</p>
+				<p>
+					<a class="btn" id="learn-more" href="#">Learn More »</a>
+				</p>
+				<p>Server Status:</p>
+				<div class="progress progress-striped active">
+					<div class="progress-bar progress-success"></div>
+				</div>
+				<div class="row status-buttons">
+					<div class="col-md-6">
+
+						<button id="down" type="button"
+							class="btn btn-danger btn-block btn-lg">Down</button>
+					</div>
+					<div class="col-md-6">
+
+						<button id="up" type="button"
+							class="btn btn-success btn-block btn-lg">Up</button>
+					</div>
+				</div>
+				<div class="row">
+					<div id="post-warning" class="alert alert-success"
+						style="display: none;">
+						<h4>Alert!</h4>
+						<strong>Warning!</strong> We only allow you to post the same
+						status every 5 minutes. <a href="#" class="alert-link">alert
+							link</a>
+					</div>
+					<div id="success-message" class="alert alert-success"
+						style="display: none;">
+						<h4>Success!</h4>
+						<strong>Thank you!</strong> Thanks for the status update. Your
+						status has been added to the database.
+					</div>
+				</div>
+				<div class="modal fade" id="modal-container-learn-more"
+					role="dialog" aria-labelledby="learnMoreModal" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
+								<h4 class="modal-title" id="learnMoreModalLabel">Learn More
+								</h4>
+							</div>
+							<div class="modal-body">
+								This site calculates the status of the game with the most recent
+								statuses and reports this to you in an easy to view format.<br />
+								<br /> If the game status percentage is going down, the game
+								probably went down recently or is currently unavailable. If the
+								server shows a high percentage and is steady, we have not
+								received any recent reports that this game went down. If you
+								know a more current status of the game, please let us know by
+								hitting either the Down or Up button below.
+							</div>
+							<div class="modal-footer">
+
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+			<div class="col-lg-2 col-md-3 col-sm-3"></div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="container text-center">
+			<div id="google-ads-1" class="col-md-12 col-sm-12 col-xs-12"></div>
+
+			<script type="text/javascript">
+				/* Calculate the width of available ad space */
+				ad = document.getElementById('google-ads-1');
+
+				if (ad.getBoundingClientRect().width) {
+					adWidth = ad.getBoundingClientRect().width; // for modern browsers 
+				} else {
+					adWidth = ad.offsetWidth; // for old IE 
+				}
+
+				/* Replace ca-pub-XXX with your AdSense Publisher ID */
+				google_ad_client = "ca-pub-1638527574854058";
+
+				/* Replace 1234567890 with the AdSense Ad Slot ID */
+				google_ad_slot = "4762332569";
+
+				/* Do not change anything after this line */
+				if (adWidth >= 970)
+					google_ad_size = [ "970", "90" ]; /* Leaderboard 970x90 */
+				else if (adWidth >= 728)
+					google_ad_size = [ "728", "90" ]; /* Banner (728 x 90) */
+				else if (adWidth >= 468)
+					google_ad_size = [ "468", "60" ]; /* Banner (468 x 60) */
+				else
+					google_ad_size = [ "320", "50" ]; /* Banner (320 x 50) */
+
+				document
+						.write('<ins class="adsbygoogle" style="display:inline-block;width:' 
+      + google_ad_size[0] + 'px;height:' 
+      + google_ad_size[1] + 'px" data-ad-client="' 
+      + google_ad_client + '" data-ad-slot="' 
+      + google_ad_slot + '"></ins>');
+
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+
+			<script async="async"
+				src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+				
+			</script>
+
+			<!-- script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			
+			<ins class="adsbygoogle" style="display: block"
+				data-ad-client="ca-pub-1638527574854058" data-ad-slot="4762332569"
+				data-ad-format="auto"></ins>
+			<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			</script-->
+
+
+		</div>
+	</footer>
+
+	<script src="js/jquery.min.js" th:src="@{js/jquery.min.js}"
+		type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"
+		type="text/javascript"></script>
+	<script src="js/scripts.js" th:src="@{js/scripts.js}"
+		type="text/javascript"></script>
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script',
+				'https://www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-82192628-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+</html>

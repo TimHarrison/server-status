@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Game Status</title>
+        <sec:csrfMetaTags/>
+        <!-- Latest compiled and minified CSS -->
+    </head>
+    <body>
+        <h1 th:inline="text">Hello [[${name}]]!</h1>
+        
+        <h1 th:inline="text">Create Game</h1>
+        <form th:action="@{/create_game}" method="post">
+        <input type="text" name="title" />
+        <textarea rows="5" cols="15" name="description"></textarea>
+        <input type="submit" value="Submit"/>
+        </form>
+        <br />
+        
+        <h1 th:inline="text">Create Task</h1>
+        <form th:action="@{/create_status}" method="post">
+        <input type="text" name="status" />
+        <input type="text" name="game" />
+        <input type="submit" value="Submit"/>
+        </form>
+        
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        
+        <h1 th:inline="text">Hello [[${games}]]!</h1>
+        
+    </body>
+</html>
